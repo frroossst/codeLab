@@ -16,6 +16,7 @@ class Game():
             "KH","KD","KS","KC",
             "QH","QD","QS","QC",
             "JH","JD","JS","JC",
+            "JO","JO"
             ]
 
     
@@ -50,7 +51,7 @@ class Game():
                 count += 1
         
 
-        if not (choiceCard[0] != choiceCard[1] != choiceCard[2]):
+        if not (choiceCard[0] != choiceCard[1] != choiceCard[2]) and not (choiceCard[0] == "JO" or choiceCard[1] == "JO" or choiceCard[2] == "JO"):
             raise ValueError ("All chosen cards must be unique")
 
         dealCard = random.sample(Game.deck,3)
@@ -62,6 +63,9 @@ class Game():
                 score += 1
             else:
                 pass
+        
+        if (dealCard[0] == "JO" or dealCard[1] == "JO" or dealCard[2] == "JO") and Game.moneyPot > 0:
+            Game.moneyPot *= 2
 
         print(dealCard)
 
@@ -86,9 +90,11 @@ class Simulate():
     def sim(self,n):
         simCount = 0
         while simCount < n:
-            Game.main()
+            Game.main(inSim=True)
             simCount += 1
         print(Game.moneyPot)
 
 
-Game.setOf(10)
+# Game.setOf(10)
+S = Simulate()
+S.sim(10000)
