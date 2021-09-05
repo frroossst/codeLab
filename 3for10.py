@@ -25,22 +25,30 @@ class Game():
     def __init__(self) -> None:
         pass
 
+    def setOf(n,simStat=False):
+        num = 0
+        while num < n:
+            Game.main(inSim = simStat)
+            num += 1
+
     @classmethod
-    def main(self):
+    def main(self,inSim=False):
 
         inputNum = 3
         count =0
         choiceCard = []
         
-        # print("Seven of hearts => 7H")
-        # print("Black, Red, Red => B,R,R")
+        if inSim:
+            choiceCard = random.sample(Game.deck,3)
+        else:
+            print("Seven of hearts => 7H")
+            print("Black, Red, Red => B,R,R")
 
-        # while count < inputNum:
-
-        #    card = input("enter card : ")
-        #    choiceCard.append(card)
-        #    count += 1
-        choiceCard = random.sample(Game.deck,3)
+            while count < inputNum:
+                card = input("enter card : ")
+                choiceCard.append(card)
+                count += 1
+        
 
         if not (choiceCard[0] != choiceCard[1] != choiceCard[2]):
             raise ValueError ("All chosen cards must be unique")
@@ -55,6 +63,8 @@ class Game():
             else:
                 pass
 
+        print(dealCard)
+
         if score == 3:
             Game.moneyPot += 10
         elif score == 2:
@@ -62,7 +72,9 @@ class Game():
         elif score == 1:
             Game.moneyPot += 2
         else:
-            Game.moneyPot -= 10
+            Game.moneyPot = Game.moneyPot - 10
+
+        print(Game.moneyPot)
 
 class Simulate():
 
@@ -79,5 +91,4 @@ class Simulate():
         print(Game.moneyPot)
 
 
-S = Simulate()
-S.sim(10000000)
+Game.setOf(10)
