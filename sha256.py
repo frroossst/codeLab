@@ -8,6 +8,19 @@ https://craft-crypto.com/how-does-sha-256-work/
 
 # Implementation of SHA256 in Python
 
+def str2bin(strIn):
+    strBin = ' '.join(format(x, 'b') for x in bytearray(strIn, 'utf-8'))
+    return strBin 
+
+def hex2bin(strIn):
+    pass
+
+def int2bin(strIn):
+    pass
+
+
+
+
 #msg = input("enter input : ")
 msg = "hello world"
 
