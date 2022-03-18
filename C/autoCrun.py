@@ -2,9 +2,6 @@ import json
 import os
 
 
-"""
-As a long time python user it was incredibly frustrating for me to compile and run the C progrram for every change made
-"""
 
 def setup():
     with open("settings.json","w") as fobj:
